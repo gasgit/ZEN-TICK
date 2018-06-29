@@ -1,0 +1,22 @@
+
+
+.form{
+	padding: 25px;
+}
+
+.main-center{
+
+	margin-top:0 auto;
+
+
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 45px 35px 45px;
+
+  margin: 0 auto;
+  background-color: #038B91;
+  border: 1px solid rgba(0,0,0,0.1);
+
+}

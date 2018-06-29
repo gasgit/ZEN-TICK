@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/support_request.css') }}">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("./static/img/GRETB-HQ.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <style>
+            div.gallery {
+                border: 1px solid #ccc;
+            }
+            
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+            
+            div.gallery img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            div.desc {
+                padding: 15px;
+                text-align: center;
+            }
+            
+            * {
+                box-sizing: border-box;
+            }
+            
+            .responsive {
+                padding: 0 6px;
+                float: left;
+                width: 24.99999%;
+            }
+            
+            @media only screen and (max-width: 700px) {
+                .responsive {
+                    width: 49.99999%;
+                    margin: 6px 0;
+                }
+            }
+            
+            @media only screen and (max-width: 500px) {
+                .responsive {
+                    width: 100%;
+                }
+            }
+            
+            .clearfix:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            </style>
+</head>
+<html>
+
+<body>
+
+    <div class="bg">
+        <div class="form">
+            <form class="form-signin " action="http://127.0.0.1:5000/get_support_request" method="POST" enctype="multipart/form-data">
+                <h3 style="margin-bottom: 25px; text-align: center;"> IT Support Request</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="school_center" name="school_center" placeholder="School/Center" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" required>
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control" id="emp_id" name="emp_id" placeholder="Employee ID" required>
+                </div>
+                <div class="form-group ">
+                    <select id="select_type" name="select_type" class="form-control" required>
+                        <option value=" ">Select Support Type...</option>
+                        <optgroup label="Software">
+                            <option value="install">Install</option>
+                            <option value="update">Update</option>
+                        </optgroup>
+                        <optgroup label="Hardware">
+                            <option value="desktop">Desktop</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="ip_phone">IP Phone</option>
+                            <option value="mobile_phone">Mobile Phone</option>
+                        </optgroup>
+                        <optgroup label="Administration">
+                            <option value="new_account_setup">New Account setup</option>
+                            <option value="password_reset">Password Reset</option>
+                        </optgroup>
+                        <optgroup label="Technical">
+                            <option value="networks">Networks</option>
+                            <option value="servers">Servers</option>
+                            <option value="wifi">Wifi</option>
+                        </optgroup>
+                        <optgroup label="Printer">
+                            <option value="new_printer_pin">New Printer Pin</option>
+                            <option value="clear_print_queue">Clear Print Queue</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group ">
+                    <textarea class="form-control" type="textarea" id="detail_message" name="detail_message" placeholder="Detailed Message" maxlength="500"
+                        rows="6" required></textarea>
+                </div>
+
+                <!-- <div class="form-group">
+                    <input class="form-control" type="file" name="file" id="file" />
+                </div> -->
+
+                <input type="file" multiple id="gallery-photo-add" name="photos">
+                <div class="gallery" ></div>
+
+
+                <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit Request</button>
+            </form>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        // Multiple images preview in browser
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#gallery-photo-add').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+    });
+</script>
