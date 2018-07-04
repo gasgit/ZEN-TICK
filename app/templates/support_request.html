@@ -32,53 +32,53 @@
         }
     </style>
     <style>
-            div.gallery {
-                border: 1px solid #ccc;
-            }
-            
-            div.gallery:hover {
-                border: 1px solid #777;
-            }
-            
-            div.gallery img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            div.desc {
-                padding: 15px;
-                text-align: center;
-            }
-            
-            * {
-                box-sizing: border-box;
-            }
-            
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 50px;
+            height: 50px;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+        }
+
+        @media only screen and (max-width: 700px) {
             .responsive {
-                padding: 0 6px;
-                float: left;
-                width: 24.99999%;
+                width: 49.99999%;
+                margin: 6px 0;
             }
-            
-            @media only screen and (max-width: 700px) {
-                .responsive {
-                    width: 49.99999%;
-                    margin: 6px 0;
-                }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .responsive {
+                width: 100%;
             }
-            
-            @media only screen and (max-width: 500px) {
-                .responsive {
-                    width: 100%;
-                }
-            }
-            
-            .clearfix:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-            </style>
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 </head>
 <html>
 
@@ -98,7 +98,22 @@
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="school_center" name="school_center" placeholder="School/Center" required>
+                    <input list="centers" class="form-control" id="school_center" name="school_center" placeholder="School/Center" required>
+                    <datalist id="centers">
+                        <option value="Colaiste A">
+                            <option value="Colaiste B">
+                                <option value="Colaiste C">
+                                    <option value="Colaiste D">
+                                        <option value="Colaiste E">
+                                            <option value="Athenry">
+                                                <option value="Galway">
+                                                    <option value="Tuam">
+                                                        <option value="Loughrea">
+                                                            <option value="VTOS Galway">
+                                                                <option value="VTOS Tuam">
+                                                                    <option value="VTOS Portumna">
+                    </datalist>
+
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Contact Number" required>
@@ -143,10 +158,10 @@
                     <input class="form-control" type="file" name="file" id="file" />
                 </div> -->
 
-                
+
                 <div class="form-group">
                     <input type="file" multiple id="gallery-photo-add" name="photos">
-                    <div class="gallery" ></div>
+                    <div class="gallery"></div>
 
 
                 </div>
